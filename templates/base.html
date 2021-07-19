@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='material-icons/iconfont/material-icons.css')}}">
+    <script src="{{url_for('static',filename='materialize-css/dist/js/materialize.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='materialize-css/dist/css/materialize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">FLASK</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/"><i class="material-icons left">house</i>Home</a></li>
+                <li><a href="/cadastro"><i class="material-icons left">create</i>Cadastro</a></li>
+                <li><a href="/clientes"><i class="material-icons left">contacts</i>Clientes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><img src="{{url_for('static', filename='imgs/flask-logo.png')}}" alt="" class="responsive-img"></li>
+        <li><a href="/"><i class="material-icons left">house</i>Home</a></li>
+        <li><a href="/cadastro"><i class="material-icons left">create</i>Cadastro</a></li>
+        <li><a href="/clientes"><i class="material-icons left">contacts</i>Clientes</a></li>
+    </ul>
+
+    {% block content %}
+    {% endblock %}
+
+            <div id="modalEdit" class="modal">
+                <h5 class="center">Editar Cliente</h5>
+                <div class="modal-content">
+                    <form action="{{ url_for('editar') }}" method="post">
+
+                        <div class="col s12">
+                            <input type="hidden" name="id_cliente" id="id_cliente">
+                        </div>
+
+                        <div class="col s12">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome">
+                        </div>
+
+                        <div class="col s12">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" name="telefone" id="telefone">
+                        </div>
+
+                        <div class="col s12">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email">
+                        </div>
+
+                        <div class="col s12">
+                            <label for="cep">Cep</label>
+                            <input type="text" name="cep" id="cep">
+                        </div>
+
+                        <div class="col s12">
+                            <button type="submit" class="btn green right">alterar<i
+                                    class="material-icons right">send</i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer col s12">
+                     <p class="center">Onload&copy</p>
+                </div>
+            </div>
+
+
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
+</body>
+
+</html>

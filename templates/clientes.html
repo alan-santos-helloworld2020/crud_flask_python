@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Onload-Clientes{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<div class="row">
+    <div class="col s12 l10 push-l1 center">
+ 
+ 
+        <p class="center">Tabela de Clientes</p>
+        <table class="striped centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Cep</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cl in clientes %}
+                <tr>
+                    <td>{{ cl.id }}</td>
+                    <td>{{ cl.nome }}</td>
+                    <td>{{ cl.telefone }}</td>
+                    <td>{{ cl.email }}</td>
+                    <td>{{ cl.cep }}</td>
+                    <td><a href="/deletar/{{cl.id}}" onclick="deletar(event)" class="btn-small btn-floating red"><i class="material-icons">delete</i></a></td>
+                    <td><a href="#" data-target="modalEdit" class="btn-small btn-floating modal-trigger blue" onclick="editar(event,{{[cl.id,cl.nome,cl.telefone,cl.email,cl.cep]}})"><i class="material-icons">edit</i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   
+
+    </div>
+</div>
+{% endblock %}
